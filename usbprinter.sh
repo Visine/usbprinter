@@ -7,14 +7,25 @@ if [[ $EUID -ne 0 ]]; then
   exit 0
 fi
 
-cp -R /etc/cups /etc/cups.bak
+bname="/etc/cups.bak"
+if [[ -e $bname ]] ; then
+    i=1
+    while [[ -e $bname.$i ]] ; do
+        let i++
+    done
+    bname=$bname.$i
+fi
+
+cp -R /etc/cups $bname
 
 wget https://github.com/Visine/usbprinter/raw/master/usbprinter.tar.gz -P /tmp/
 
 service cups stop
+
 tar xpvzf /tmp/usbprinter.tar.gz -C /
 rm /tmp/usbprinter.tar.gz
 sed -i -e  's/DeviceURI.*$/DeviceURI usbprinter:\/dev\/usb\/printer/g' /etc/cups/printers.conf
 udevadm control --reload
 udevadm trigger --action=add
+
 service cups start
