@@ -1,16 +1,21 @@
 # usbprinter
 
-Download
-~~~~~~~~
+### Download
 
-wget -O usbprinter.sh https://raw.githubusercontent.com/Visine/usbprinter/master/usbprinter.sh
-chmod +x usbprinter.sh
+```sh
+$ wget -O usbprinter.sh https://raw.githubusercontent.com/Visine/usbprinter/master/usbprinter.sh
+$ chmod +x usbprinter.sh
+```
 
-or
+or 
 
-curl -Lo usbprinter.sh https://raw.githubusercontent.com/Visine/usbprinter/master/usbprinter.sh
-chmod +x usbprinter.sh
+```sh
+$ curl -Lo usbprinter.sh https://raw.githubusercontent.com/Visine/usbprinter/master/usbprinter.sh
+$ chmod +x usbprinter.sh
+```
 
-Usage
-~~~~~
-./usbprinter.sh
+### Usage
+
+```sh
+$ sudo ./usbprinter.sh
+```
