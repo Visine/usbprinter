@@ -29,3 +29,7 @@ udevadm control --reload
 udevadm trigger --action=add
 
 service cups start
+
+if [[ ! -e /dev/usb/printer ]];
+    shutdown -r +2
+fi
