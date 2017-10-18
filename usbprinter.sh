@@ -30,6 +30,14 @@ udevadm trigger --action=add
 
 service cups start
 
-if [[ ! -e /dev/usb/printer ]];
-    shutdown -r +2
+if [[ ! -e /dev/usb/printer ]] ; then
+    read -r -p "For the printer to work properly, you must reboot. Reboot for fix printer link? [y/N] " response
+    case "$response" in
+	[yY][eE][sS]|[yY]) 
+            shutdown -r +1
+            ;;
+        *)
+	    echo "Reboot failed. The printer is stopped."
+            ;;
+    esac
 fi
